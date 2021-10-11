@@ -22,7 +22,7 @@ console.log(typeof isIsland);
 console.log(typeof language);
 console.log(typeof country);
 console.log(typeof population);
-*/
+
 
 // Lecture Basic Operations
 
@@ -104,5 +104,61 @@ if (markBmi > johnBmi) {
 
 }
 
+// Type conversion is conversion to another datatype done manually
+// Type Coercion is done by javascript which is hidden from us
+
+// Conversion
+const inputYear = '1991';
+
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+console.log(Number('Neil'));
+
+console.log(String(27));
+
+// Coercion
+console.log('23' + 3);
+console.log('23' - 3);
+console.log('23' / '3');
+console.log('23' * '3');
+console.log('23' > '3');
+
+console.log(15 - 5 - 5 - 4 + '1'); //outputs '11'
 
 
+// Falsy values : 0, NaN, undefined, '', null
+
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean({}));
+console.log(Boolean('Bob'));
+console.log(Boolean(1));
+
+const money = 0;
+
+if (money) { //false
+    console.log("dont spend it all");
+} else { //true
+    console.log("get a job");
+}
+
+
+
+//Comparison
+// == and != does coercion (bad practice to use)
+// === and !== does not do coercion (always use this and do conversion manually)
+
+const favourite = Number(prompt("Enter number:"));
+
+if (favourite === 23) {
+    console.log(`23 is a cool number`);
+} else if (favourite === 9) {
+    console.log(`9 is a cool number`);
+} else {
+    console.log(`number not cool`);
+}
+
+if (favourite !== 10) console.log(`why not 10?`);
+
+*/
