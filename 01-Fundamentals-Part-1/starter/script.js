@@ -161,4 +161,46 @@ if (favourite === 23) {
 
 if (favourite !== 10) console.log(`why not 10?`);
 
+
+const hasGoodVision = true;
+const hasDriversLicense = true;
+
+console.log(hasDriversLicense && hasGoodVision);
+console.log(hasDriversLicense || hasGoodVision);
+console.log(!hasDriversLicense);
+
+if (hasGoodVision && hasDriversLicense) {
+    console.log('Sarah can drive');
+} else {
+    console.log(`Let someone else drive`);
+}
+
+const isTired = true;
+
+if (hasGoodVision && hasDriversLicense && !isTired) {
+    console.log('Sarah can drive');
+} else {
+    console.log(`Let someone else drive`);
+}
+
 */
+
+//Challenge 3
+
+const dolphinsAverageScore = (196 + 108 + 89) / 3;
+const koalasAverageScore = (88 + 91 + 10) / 3;
+
+console.log(`Dolphins Score:${dolphinsAverageScore}
+Koalas Score:${koalasAverageScore}`);
+
+if (dolphinsAverageScore === koalasAverageScore && dolphinsAverageScore >= 100 && koalasAverageScore >= 100) {
+    console.log('Tie: They both win');
+} else if (dolphinsAverageScore > koalasAverageScore && dolphinsAverageScore >= 100) {
+    console.log(`Dolphis win`);
+} else if (dolphinsAverageScore < koalasAverageScore && koalasAverageScore >= 100) {
+    console.log(`Koalas win`);
+} else {
+    console.log(`No one wins`);
+}
+
+
