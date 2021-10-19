@@ -183,7 +183,7 @@ if (hasGoodVision && hasDriversLicense && !isTired) {
     console.log(`Let someone else drive`);
 }
 
-*/
+
 
 //Challenge 3
 
@@ -202,5 +202,50 @@ if (dolphinsAverageScore === koalasAverageScore && dolphinsAverageScore >= 100 &
 } else {
     console.log(`No one wins`);
 }
+*/
+// Switch
 
+const day = 'saturday';
 
+switch (day) {
+    case 'monday':
+        console.log(`It is monday`);
+        break;
+    case 'tuesday':
+        console.log(`It is tuesday`);
+        break;
+    case 'wednesday':
+    case 'thursday':
+        console.log(`it is wednesday or thursday`);
+        break;
+    case 'friday':
+        console.log(`It is friday`);
+        break;
+    case 'saturday':
+    case 'sunday':
+        console.log(`It is weekend`);
+        break;
+    default:
+        console.log(`Not a valid day`);
+}
+
+//Ternary operator
+
+const age = 18;
+
+age >= 18 ? console.log(`wine`) : console.log(`water`);
+
+// in practice
+const drink = age >= 18 ? `wine` : `water`;
+console.log(`drink`);
+
+console.log(`what you can drink: ${age >= 18 ? `wine` : `water`}`);
+// can be used here since this is an expression (prdouces result) and not a statment (does not prdouce result) unlike if/else
+
+//Challenge 4
+
+const bill = 275;
+
+let tip = bill >= 50 && bill <= 300 ? 0.15 * bill : .20 * bill;
+
+console.log(`Bill:$${bill}, Tip:$${tip}, Total:$${bill + tip}`);
