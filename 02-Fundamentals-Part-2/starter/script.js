@@ -1,0 +1,1 @@
+'use strict'; // helps with fixing errors
