@@ -1,5 +1,5 @@
 'use strict'; // helps with fixing errors
-// Functions 
+// Functions
 /*
 function fruitProcessor(apples, oranges) {
     console.log(apples, oranges)
@@ -14,7 +14,7 @@ console.log(juice);
 // or can log saying
 console.log(fruitProcessor(5, 0));
 
-// Declarations 
+// Declarations
 
 function calcAge1(birthYear) {
     return 2021 - birthYear;
@@ -52,7 +52,7 @@ const calcAge5 = (birthYear, firstName) => {
 }
 
 console.log(calcAge5(1994, 'Neail'));
-*/
+
 //Challenge 1
 
 const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
@@ -70,3 +70,13 @@ function checkWinner(dolphinsAverage, koalasAverage) {
     }
 }
 checkWinner(dolphinsAverage, koalasAverage);
+*/
+
+// Arrays 
+
+const friends = ['michael', 'peter', 'glen'];
+
+console.log(friends);
+console.log(friends.length); // logs the amount of elements in the array
+
+console.log(friends.length - 1); // logs the last element in the array
