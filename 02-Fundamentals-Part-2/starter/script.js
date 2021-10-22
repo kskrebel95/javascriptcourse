@@ -70,7 +70,7 @@ function checkWinner(dolphinsAverage, koalasAverage) {
     }
 }
 checkWinner(dolphinsAverage, koalasAverage);
-*/
+
 
 // Arrays 
 
@@ -80,3 +80,46 @@ console.log(friends);
 console.log(friends.length); // logs the amount of elements in the array
 
 console.log(friends.length - 1); // logs the last element in the array
+
+// Array methods
+
+friends.push('Neailk'); // adds element to end of the array
+console.log(friends);
+
+friends.unshift('Nirmal'); // adds to the begining of the array
+console.log(friends);
+
+friends.pop(); //Removes last element of array
+
+friends.shift(); // removes first element of array
+
+console.log(friends);
+
+console.log(friends.indexOf('peter')); // returns the index of peter in array
+
+console.log(friends.includes('peter')); //returns true if peter is contained in the array, false otherwise
+*/
+// Challenge 2
+
+const calcTip = (bill) => {
+    const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+    return tip;
+}
+
+//console.log(calcTip(100));
+
+const bills = [125, 555, 44];
+const tips = [];
+const totals = [];
+
+tips.push(calcTip(bills[0]));
+tips.push(calcTip(bills[1]));
+tips.push(calcTip(bills[2]));
+//or tips=[calcTip(bills[0]),calcTip(bills[1]),calcTip(bills[2])];
+
+totals.push(bills[0] + tips[0]);
+totals.push(bills[1] + tips[1]);
+totals.push(bills[2] + tips[2]);
+//or totals=[bills[0] + tips[0],bills[1] + tips[1],bills[2] + tips[2]];
+
+console.log(bills, tips, totals);
