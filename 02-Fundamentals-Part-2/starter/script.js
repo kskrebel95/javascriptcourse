@@ -98,7 +98,7 @@ console.log(friends);
 console.log(friends.indexOf('peter')); // returns the index of peter in array
 
 console.log(friends.includes('peter')); //returns true if peter is contained in the array, false otherwise
-*/
+
 // Challenge 2
 
 const calcTip = (bill) => {
@@ -123,3 +123,83 @@ totals.push(bills[2] + tips[2]);
 //or totals=[bills[0] + tips[0],bills[1] + tips[1],bills[2] + tips[2]];
 
 console.log(bills, tips, totals);
+
+
+
+//Objects
+
+const nirmal = {
+    firstName: 'Nirmal',
+    lastName: 'Ramkissoon',
+    age: 27,
+    height: 58
+};
+
+// Retrieve data from object
+console.log(nirmal.firstName);
+console.log(nirmal['firstName']);
+
+//Bracket notation can use expressions whereas dot cannot
+// Example:
+const nameKey = 'Name';
+console.log(nirmal['first' + nameKey]);
+
+const interest = prompt(`What would you like to know about Nirmal?`);
+
+if (nirmal[interest]) {
+    console.log(nirmal[interest]);// cannot use nirmal.interest since the interest property does not exist
+} else {
+    console.log(`${interest} does not exist on Nirmal`);
+}
+
+// adding new properties to alredy exisiting object
+nirmal['insta'] = 'nirmal.ramkissoon';
+nirmal.location = 'Piarco';
+nirmal.friends = ['clark', 'bruce', 'hal'];
+
+console.log(`${nirmal.firstName} has ${nirmal.friends.length} friends, and his best friend is called ${nirmal.friends[0]} `);
+console.log(nirmal);
+*/
+
+// Object Methods
+
+const newnirmal = {
+    firstName: 'Nirmal',
+    lastName: 'Ramkissoon',
+    birthYear: 1994,
+    job: 'teacher',
+    height: 58,
+    hasDriven: true,
+
+    // Version 1
+    //functions attached to an object is called a method
+    // calcAge: function (birthYear) {
+    //     return 2021 - birthYear;
+    // }
+
+
+    // Version  2
+    //This
+
+    // calcAge: function () {
+    //     console.log(this);
+    //     return 2021 - this.birthYear;
+    // }
+
+    //Version 3 - creates value in this.age so it can be called at anytime after function is called
+
+    calcAge: function () {
+        this.age = 2021 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function () {
+        return (`${this.firstName} is a ${this.calcAge()} year old ${this.job} and he has ${this.hasDriven ? 'a' : 'no'} driver's license`);
+    }
+
+};
+
+
+console.log(newnirmal.calcAge());
+console.log(newnirmal.age);
+console.log(newnirmal.getSummary());
