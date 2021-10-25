@@ -72,7 +72,7 @@ function checkWinner(dolphinsAverage, koalasAverage) {
 checkWinner(dolphinsAverage, koalasAverage);
 
 
-// Arrays 
+// Arrays
 
 const friends = ['michael', 'peter', 'glen'];
 
@@ -159,7 +159,7 @@ nirmal.friends = ['clark', 'bruce', 'hal'];
 
 console.log(`${nirmal.firstName} has ${nirmal.friends.length} friends, and his best friend is called ${nirmal.friends[0]} `);
 console.log(nirmal);
-*/
+
 
 // Object Methods
 
@@ -203,3 +203,114 @@ const newnirmal = {
 console.log(newnirmal.calcAge());
 console.log(newnirmal.age);
 console.log(newnirmal.getSummary());
+
+// Challenege 3
+
+const mark = {
+    fullName: 'Mark Miller',
+    height: 1.69,
+    weight: 78,
+
+    calcBMI: function () {
+        mark.BMI = this.weight / (this.height * this.height);
+        return mark.BMI;
+
+        //     can also say
+        //     this.BMI = this.weight / (this.height * this.height);
+        //     return this.BMI;
+    }
+};
+
+const john = {
+    fullName: 'John Smith',
+    height: 1.95,
+    weight: 92,
+
+    calcBMI: function () {
+        john.BMI = this.weight / (this.height * this.height);
+        return john.BMI;
+    }
+};
+console.log(`${mark.calcBMI() > john.calcBMI() ? mark.fullName + ' has a higher BMI: ' + mark.BMI : john.fullName + ' has a higher BMI: ' + john.BMI}`);
+
+//Loops
+
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting rep ${rep}`);
+}
+
+const years = [1991, 1992, 1993, 1994, 1995];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+    ages.push(2021 - years[i]);
+}
+console.log(ages);
+
+// continue and break
+
+const arr = [1, 'cec', 45, true, 4, 'vfarw'];
+
+for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] !== 'string') continue;
+
+    //using break terminates the loop
+    // if (typeof arr[i] !== 'number') break;
+
+    console.log(arr[i]);
+}
+
+// loop array backwards
+
+for (let i = years.length - 1; i >= 0; i--) {
+    console.log(i, years[i]);
+}
+
+// loops within loops
+
+for (let set = 1; set <= 3; set++) {
+    console.log(`Starting set ${set}`);
+
+    for (let rep = 1; rep <= 5; rep++) {
+        console.log(`Doing rep ${rep}`);
+    }
+}
+
+//while loop
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+    console.log(dice);
+    dice = Math.trunc(Math.random() * 6) + 1;
+}
+*/
+
+//Challenge 4
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+const calcTip = (bill) => {
+    return bill >= 50 && bill <= 300 ? .15 * bill : .2 * bill;
+}
+
+for (let i = 0; i < bills.length; i++) {
+    tips.push(calcTip(bills[i]));
+    totals.push(bills[i] + tips[i]);
+
+
+}
+
+console.log(bills, tips, totals);
+
+function calcAverage(totals) {
+    let sum = 0;
+    for (let i = 0; i < totals.length; i++) {
+        sum = sum + totals[i];
+        //sum+=totals[i];
+    }
+    return sum / totals.length;
+}
+
+console.log(calcAverage(totals));
