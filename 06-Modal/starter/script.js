@@ -7,7 +7,7 @@ const btncloseModal = document.querySelector('.close-modal');
 
 // for (let i = 0; i < btnshowModal.length; i++) {
 //   console.log(btnshowModal[i].textContent);
-// }
+// } Shows text content of each modal btn
 
 // for (let i = 0; i < btnshowModal.length; i++) {
 //   btnshowModal[i].addEventListener('click', function () {
@@ -15,7 +15,7 @@ const btncloseModal = document.querySelector('.close-modal');
 //     modal.classList.remove('hidden');
 //     overlay.classList.remove('hidden');
 //   });
-// }
+// } Adds event listener to each modal button
 
 // btncloseModal.addEventListener('click', function () {
 //   modal.classList.add('hidden');
@@ -43,3 +43,16 @@ for (let i = 0; i < btnshowModal.length; i++) {
 }
 btncloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
+
+// key press events
+
+// an event e occurs when the keydown action takes place on the document. This even is an object containing
+//properties of e
+document.addEventListener('keydown', function (e) {
+  console.log(e.key);
+
+  //if the key press is equal to escape and the modal does not contain the class hidden then close the modal
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    closeModal();
+  }
+});
