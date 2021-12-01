@@ -12,6 +12,10 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
+  order: function (starter, mainCourse) {
+    return [this.starterMenu[starter], this.mainMenu[mainCourse]];
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -27,3 +31,51 @@ const restaurant = {
     },
   },
 };
+
+// Array destructuring
+const arr = [2, 3, 4];
+const [x, y, z] = arr;
+
+console.log(x, y, z);
+
+//takes resturant.categories[0] and resturant.categories[2]. Skips [2] with the space. first and second can be called anything
+let [first, , second] = restaurant.categories;
+console.log(first, second);
+
+//Switching variables with normal way
+
+// const temp = first;
+// first = second;
+// second = temp;
+// console.log(first, secondconsole.log(restaurant.order(2, 0));
+//Switching varibales via array destructuring
+
+[first, second] = [second, first];
+console.log(first, second);
+
+//calling method order normally
+
+// console.log(restaurant.order(2, 0));
+
+//calling method via destructuring (Return 2 values from function)
+
+const [starter, main] = restaurant.order(2, 0);
+console.log(starter, main);
+
+// Working with nested arrays
+
+const nested = [2, 3, [4, 5]];
+
+//taking first value and array
+const [i, , j] = nested;
+console.log(i, j);
+
+// first value and array as separated values
+
+const [a, , [b, c]] = nested;
+console.log(a, b, c);
+
+//Setting default values for unknown arrays
+// Since p and q gets set to 4 , r remains 1 since there is no third value
+const [p = 1, q = 1, r = 1] = [4, 4];
+console.log(p, q, r);
