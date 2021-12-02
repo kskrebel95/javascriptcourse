@@ -16,6 +16,25 @@ const restaurant = {
     return [this.starterMenu[starter], this.mainMenu[mainCourse]];
   },
 
+  // can destructure the object in parameters and get 4 variables
+  orderDelivery: function ({ address, time, starterIndex, mainIndex }) {
+    console.log(
+      `Order:${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  //another order delivery function with defaults if some objects are missing when called
+  orderDelivery1: function ({
+    address = 'POS',
+    time = '20:00',
+    starterIndex,
+    mainIndex,
+  }) {
+    console.log(
+      `Order:${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -79,3 +98,56 @@ console.log(a, b, c);
 // Since p and q gets set to 4 , r remains 1 since there is no third value
 const [p = 1, q = 1, r = 1] = [4, 4];
 console.log(p, q, r);
+
+// Destructuring objects
+
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+// Destructuring objects with new variable names
+
+const {
+  name: resturantName,
+  openingHours: hours,
+  categories: list,
+} = restaurant;
+
+console.log(resturantName, hours, list);
+
+//Setting Defaults (might be working with api and wouldnt know the object)
+
+//Since menu does not exist in resturant the default is []
+//Since an array exsists on starterMenu, starters is equal to that array
+const { menu = [], starterMenu: staters = [] } = restaurant;
+console.log(menu, staters);
+
+//Mutating variables
+
+let w = 111;
+let t = 999;
+
+const obj = { w: 23, t: 7, o: 98 };
+
+//Since we cannot have anything assigned to anything in curly brackets { w, t } = obj
+//because the browser looks for code We must wrap it in ()
+({ w, t } = obj);
+console.log(w, t);
+
+//Nested objects
+
+const {
+  fri: { open, close },
+} = openingHours; //using opening hours variable that was destructured before
+console.log(open, close);
+
+restaurant.orderDelivery({
+  address: 'Piarco',
+  time: '22:30',
+  starterIndex: 1,
+  mainIndex: 2,
+});
+
+restaurant.orderDelivery1({
+  starterIndex: 1,
+  mainIndex: 2,
+});
