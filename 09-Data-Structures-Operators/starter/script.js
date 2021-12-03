@@ -35,6 +35,15 @@ const restaurant = {
     );
   },
 
+  orderIngredients: function (ing1, ing2, ing3) {
+    console.log(`Ingredient ${ing1},Ingredient ${ing2},Ingredient ${ing3}`);
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -151,3 +160,91 @@ restaurant.orderDelivery1({
   starterIndex: 1,
   mainIndex: 2,
 });
+
+// Spread operator (unpacking array)
+
+const arrr = [7, 8, 9];
+
+const newBadArray = [1, 2, arrr[0], arrr[1], arrr[2]];
+// is the same as
+const newGoodArray = [1, 2, ...arrr];
+console.log(newBadArray, newGoodArray);
+
+//Unpacks each value in output
+console.log(...newGoodArray);
+
+//Spread value similar to destructing but unpacks all values and does not create variables
+
+const newMenu = [...restaurant.mainMenu, 'Gonnci'];
+
+console.log(newMenu);
+
+//Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(mainMenuCopy);
+
+//Merge array
+
+const mergedArray = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(mergedArray);
+
+//Spread can work on itterbales.Iterables are arrays, string, maps and sets but NOT objects
+// Spread can only work passing as parameters in function or making an array
+
+const str = 'Jonas';
+const strSpread = [...str];
+console.log(strSpread);
+
+// \ is used in the output so that the ' does not end the string
+const ingredients = [
+  // prompt("Let's Enter ingredient:"),
+  // prompt("Let's Enter ingredient:"),
+  // prompt("Let's Enter ingredient:"),
+];
+
+restaurant.orderIngredients(...ingredients);
+
+// Objects
+
+const resturantNew = { foundedIn: 1998, ...restaurant };
+console.log(resturantNew);
+
+//Object Copy
+
+const resturantCopy = { ...restaurant };
+console.log(resturantCopy, restaurant);
+
+//REST (the opposite of spread {used to pack mulitpe values into array})
+//called the rest cause it takes the rest of the elements(unused elements)
+
+const [s, , d, ...others] = [1, 2, 3, 4, 5, 6];
+console.log(a, d, others);
+
+const [pizaa, , risotto, ...otherss] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizaa, risotto, otherss);
+
+//Objects
+
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+
+//using rest with functions
+const add = function (...values) {
+  let total = 0;
+  for (let i = 0; i < values.length; i++) {
+    total += values[i];
+  }
+  console.log(total);
+};
+
+add(1, 2, 3);
+
+const v = [1, 2, 3];
+add(...v);
+
+restaurant.orderPizza('cheese', 'tomato', 'pine', 'chicken', 'ham');
+
+//Short Circuiting
