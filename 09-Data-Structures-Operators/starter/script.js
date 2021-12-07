@@ -437,3 +437,120 @@ for (const item of menu1) console.log(item);
 for (const item of menu1.entries()) {
   console.log(`${item[0] + 1}:${item[1]} `);
 }
+
+// Changes to objects in ES6 using resturant object like before
+
+const openingHours1 = {
+  thu: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+const restaurant1 = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  // when adding an object within an object we can simplyweekdays1[3] say
+  openingHours1, //This is done instead of openingHours1=openingHours1,
+  //the  : and function keywords are not needed
+  order(starter, mainCourse) {
+    return [this.starterMenu[starter], this.mainMenu[mainCourse]];
+  },
+
+  // can destructure the object in parameters and get 4 variables
+  orderDelivery({ address, time, starterIndex, mainIndex }) {
+    console.log(
+      `Order:${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  //another order delivery function with defaults if some objects are missing when called
+  orderDelivery1({ address = 'POS', time = '20:00', starterIndex, mainIndex }) {
+    console.log(
+      `Order:${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderIngredients(ing1, ing2, ing3) {
+    console.log(`Ingredient ${ing1},Ingredient ${ing2},Ingredient ${ing3}`);
+  },
+
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+};
+
+// We can also compute property names
+
+// before we could only compute the values and not the names
+const weekdays1 = ['mon', 'tues', 'weds', 'thurs', 'fri', 'sat', 'sun'];
+const openingHours2 = {
+  [weekdays1[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays1[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [`day-${4 + 2}`]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+//optional Chaining (used to read information from apis)
+
+//MESSY SOLUTION
+
+//this checks to see if openinghours exist and opening hours on a monday
+// can get out of hand quickly with alot of nested objects
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon);
+
+//Optional chaining SOLUTION
+
+//This line says only if opening hours exists then the mon property will try to be read else undefined is returned
+// rules of null coalesing applies so '' or 0 is not falsy
+console.log(restaurant.openingHours?.mon);
+
+//can have multiple optional chaining
+console.log(restaurant.openingHours?.mon?.open);
+
+//Real world example
+const days = ['mon', 'tues', 'weds', 'thurs', 'fri', 'sat', 'sun'];
+
+// for (const day of days) {
+//   const open = restaurant.openingHours[days]?.open;
+//   console.log(`We are open on ${day} at ${open}`);
+// }
+
+//Since the code above returns undefined  we edit it to return closed on those days and 0 (0 is falsy so we use null coalesing)
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`We are open on ${day} at ${open}`);
+}
+
+//Also words with methods
+
+console.log(restaurant.order?.(0, 1) ?? `Method does not exist`);
+console.log(restaurant.orderRisotto?.(0, 1) ?? `Method does not exist`);
+
+//Arrays
+
+const users = [{ name: 'Jonas', country: 'Niel', age: 15 }];
+
+console.log(users?.[0].name ?? `Array empty`);
