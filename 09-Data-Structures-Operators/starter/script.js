@@ -554,3 +554,55 @@ console.log(restaurant.orderRisotto?.(0, 1) ?? `Method does not exist`);
 const users = [{ name: 'Jonas', country: 'Niel', age: 15 }];
 
 console.log(users?.[0].name ?? `Array empty`);
+
+// Looping over objetcs
+
+//Property Names
+
+const properties = Object.keys(openingHours); // This creates an array with the properties of openingHoiurs [thu,fri,sat]]}
+let daysStr = `We are open ${properties.length} days : `;
+for (const dayss of properties) {
+  daysStr += `${dayss} ,`;
+}
+console.log(daysStr);
+
+//Property Values
+const values = Object.values(openingHours); // This creates an array with the object of  open and close times [{…}, {…}, {…}]
+console.log(values);
+
+//Enite Object
+
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  // console.log(x);
+  console.log(`We open on ${key} , open at: ${open}, close at: ${close}`);
+}
+
+//Coding Challenge 2
+// 1.
+
+// Can also say
+for (const [index, player] of game.scored.entries()) {
+  console.log(`Goal ${index + 1} : ${player}`);
+}
+//My solution
+for (const score of game.scored.entries()) {
+  console.log(`Goal ${score[0] + 1} : ${score[1]}`);
+}
+
+// 2.
+
+const Odds = Object.values(game.odds);
+let average = 0;
+for (const odd of Odds) average += odd;
+
+average /= Odds.length;
+console.log(average);
+
+// 3.
+for (const [team, odd] of Object.entries(game.odds)) {
+  let teamStr = team === `x` ? `draw` : `Victory of ${game[team]}'`;
+  console.log(`Odd of ${teamStr} : ${odd} `);
+}
