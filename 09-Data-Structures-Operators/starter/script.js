@@ -606,3 +606,42 @@ for (const [team, odd] of Object.entries(game.odds)) {
   let teamStr = team === `x` ? `draw` : `Victory of ${game[team]}'`;
   console.log(`Odd of ${teamStr} : ${odd} `);
 }
+
+// Sets :always has unique values(no duplicates)
+
+const orderSet = new Set([
+  'pasta',
+  'pizza',
+  'pizza',
+  'risotto',
+  'pasta',
+  'pizza',
+]);
+
+console.log(orderSet); //outputs pasta,pizza,risotto
+console.log(orderSet.size); // outputs the amount of values in the set
+console.log(orderSet.has('pizza')); //outputs true cause pizza is in the set, false otherwise
+console.log(orderSet.add('Garlic Bread')); //adds gartlic breaad to the set
+orderSet.delete('risotto'); //deletes risotto from the set
+// orderSet.clear();  //deletes all elements from the set
+console.log(orderSet);
+
+//There is no way to get values out of set since there are no indexes and  all values are unique.
+// We just need to know if the value is in the set using the has method
+//If we need values indexed that can be traversed we can use an array
+
+//Loop through set
+
+for (const order of orderSet) console.log(order);
+
+//Main use of a set is to remove duplicate values of arrays
+
+//Example
+
+const staff = ['waiter', 'manager', 'waiter', 'chef'];
+
+const staffRoles = new Set(staff); //an iterable must be used
+console.log(staffRoles);
+
+const staffRolesArray = [...new Set(staff)]; //Creates array using staff set
+console.log(staffRolesArray);
